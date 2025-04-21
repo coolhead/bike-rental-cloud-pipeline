@@ -1,0 +1,18 @@
+s3_bucket: "bike-rental-pipeline-data"
+s3_data_key: "data/bike_rental.csv"
+s3_model_key: "models/best_model.joblib"
+s3_predictions_key: "predictions/predictions.csv"
+
+model_params:
+  n_estimators: 100
+  max_depth: 5
+
+param_distributions:
+  n_estimators: [100, 200, 300]
+  max_depth: [5, 10, 15, 20]
+  min_samples_split: [2, 5, 10]
+  min_samples_leaf: [1, 2, 4]
+
+tuner:
+  n_iter: 10
+  cv: 3
