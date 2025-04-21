@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" alt="Project Status Badge"/>
+</p>
+
+
+<p align="center">
   <a href="https://github.com/coolhead/bike-rental-cloud-pipeline/">
     <img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square" alt="Build Status" />
   </a>
