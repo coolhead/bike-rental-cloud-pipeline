@@ -2,6 +2,7 @@ import boto3
 import yaml
 import os
 import pandas as pd
+import numpy as np
 from joblib import load
 from sklearn.metrics import mean_squared_error
 
@@ -17,7 +18,6 @@ def model_inference(config_path):
 
     s3_client = boto3.client('s3')
 
-    # Download best model
     if not os.path.exists("models"):
         os.makedirs("models")
     download_model_from_s3(config['s3_bucket'], config['s3_model_key'], "models/best_model.joblib", s3_client)
@@ -27,19 +27,17 @@ def model_inference(config_path):
 
     y_pred = model.predict(X_test)
 
-    # Save predictions locally
     predictions_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
 
     if not os.path.exists("predictions"):
         os.makedirs("predictions")
-    predictions_df.to_csv("predictions/predictions.csv", index=False)
 
-    # Upload to S3
+    predictions_df.to_csv("predictions/predictions.csv", index=False)
     upload_predictions_to_s3("predictions/predictions.csv", config['s3_bucket'], config['s3_predictions_key'], s3_client)
 
-    # Optional: print RMSE
-    rmse = mean_squared_error(y_test, y_pred, squared=False)
-    print(f"Root Mean Squared Error on Test Set: {rmse:.2f}")
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    print(f"✅ Predictions saved and uploaded to S3 successfully!\n✅ Root Mean Squared Error on Test Set: {rmse:.2f}")
 
 if __name__ == "__main__":
     model_inference("configs/config.yaml")
