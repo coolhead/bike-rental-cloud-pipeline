@@ -6,35 +6,44 @@
 # Bike Rental Prediction MLOps Pipeline 🚲
 
 ## Overview
-This project implements a full Machine Learning Operations (MLOps) pipeline for predicting bike rentals using AWS Cloud and a local setup. It includes:
+
+
+This project implements a **full Cloud MLOps pipeline** for predicting bike rental demand using AWS S3, EC2, and Python. It covers:
+
 - Data Preprocessing
 - Hyperparameter Tuning
 - Model Training
 - Model Inference
-- Saving Models and Predictions
+- Saving and Fetching Models and Predictions from AWS S3
 
-Designed to be cloud-friendly, simple, modular, and production-ready!
+Designed to be cloud-native, modular, and production-ready!
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── data/
-│   └── bike_rental.csv (Input dataset)
-├── processed/
-│   ├── train_test_split.joblib (Saved train/test data)
-│   └── feature_scaler.joblib (Scaler object)
-├── models/
-│   └── best_model.joblib (Saved best trained model)
-├── predictions/
-│   └── predictions.csv (Test set predictions)
+bike-rental-cloud-pipeline/
+├── configs/
+│   └── config.yaml           # AWS S3 paths + model configs
+├── data/                     # (Optional) Local downloaded data from S3
+│   ├── bike_rental.csv        # Original dataset
+│   └── bike_rental_new.csv    # New unseen data for drift detection (optional)
+├── processed/                 # Preprocessed train-test splits and scaler
+│   ├── train_test_split.joblib
+│   └── feature_scaler.joblib
+├── models/                    # Locally saved trained model
+│   └── best_model.joblib
+├── predictions/               # Model predictions stored locally
+│   └── predictions.csv
 ├── scripts/
-│   ├── preprocessing.py (Data preprocessing)
-│   ├── train_model.py (Model training and tuning)
-│   └── model_inference.py (Model inference)
-├── requirements.txt (Required Python packages)
-└── README.md
+│   ├── preprocessing.py       # Download data from S3 and preprocess
+│   ├── train_model.py          # Train model and upload to S3
+│   └── model_inference.py      # Download model, predict and upload predictions
+├── Banner.jpg                 # Project cover image
+├── README.md                  # Project documentation
+├── requirements.txt           # Python dependencies
+
 ```
 
 ---
@@ -89,6 +98,7 @@ python scripts/model_inference.py
 - Randomized Search for hyperparameter tuning
 - Joblib-based model persistence
 - Modular and extensible structure
+- Supports data drift detection using historical and new unseen datasets.
 
 ---
 
