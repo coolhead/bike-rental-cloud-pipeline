@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  bike-rental-api:
+    build: .
+    container_name: bike-rental-api-container
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
