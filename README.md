@@ -2,6 +2,17 @@
   <img src="Banner.jpg" alt="Bike Rental MLOps Project Banner" width="80%" />
 </p>
 
+<p align="center">
+  <a href="https://github.com/coolhead/bike-rental-cloud-pipeline/">
+    <img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square" alt="Build Status" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License: MIT" />
+  </a>
+  <a href="https://github.com/coolhead/bike-rental-cloud-pipeline/">
+    <img src="https://img.shields.io/github/repo-size/coolhead/bike-rental-cloud-pipeline?style=flat-square" alt="Repo Size" />
+  </a>
+</p>
 
 # Bike Rental Prediction MLOps Pipeline 🚲
 
